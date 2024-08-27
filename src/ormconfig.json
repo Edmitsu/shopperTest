@@ -1,0 +1,20 @@
+{
+    "type": "postgres",
+    "host": "db",
+    "port": 5432,
+    "username": "user",
+    "password": "pass",
+    "database": "mydb",
+    "synchronize": true,
+    "logging": false,
+    "entities": [
+      "src/entity/**/*.ts"
+    ],
+    "compilerOptions": {
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true
+    }
+      
+      
+  }
+  

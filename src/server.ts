@@ -1,12 +1,17 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
+import 'reflect-metadata';
+import { createConnection } from 'typeorm';
+import router from './routes';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('API está rodando!');
-});
+app.use(express.json());
 
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-});
+createConnection().then(() => {
+  app.use('/api', router);
+
+  app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+  });
+}).catch(error => console.log(error));
